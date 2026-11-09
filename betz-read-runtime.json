@@ -1,0 +1,10 @@
+{
+  "contract_type": "betz_read_runtime",
+  "contract_version": "1.0",
+  "environment": "DEV",
+  "instance": "Dev1",
+  "competition_id": "DEV2026",
+  "data_path": "data/DEV2026/",
+  "apps_script_url": "https://script.google.com/macros/s/AKfycbxRSZfzFcLg_oJ3RaxvwTljBmuCpLETaAvyZiMKa14zExRIdweQcgsDWjlbLENTJyCFJQ/exec",
+  "deployment_id": "DEV2026_PLAYOFFS_SANDBOX"
+}

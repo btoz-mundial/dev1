@@ -1,0 +1,14 @@
+{
+  "contract_type": "betz_read_dev_publication_manifest",
+  "contract_version": "1.0",
+  "environment": "DEV",
+  "instance": "Dev1",
+  "competition_id": "DEV2026",
+  "public_repository": "btoz-mundial/dev1",
+  "source_repository": "btoz-mundial/SideHustle",
+  "source_commit": "72fce838ebe3fb69840e96ebf0f743b5f50b72ce",
+  "current_period_id": "WC",
+  "publication_state": "PRE_FIRST_FREEZE",
+  "capture_surface_published": true,
+  "tree_sha256": "b2cbcaac35a816d283bdf269bd57b04a8d24ccff5afc894ceae79dbb856cd633"
+}

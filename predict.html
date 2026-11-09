@@ -585,12 +585,17 @@ function showProjectionPending(out){ lastSent = fmt(out.received_at); acceptCurr
 //--------------------------------------------------------------
 var RECEIVER_TIMEOUT_MS = 15000;
 var __betzFrame = null;
+var __betzFrameSeq = 0;
 var __betzChain = Promise.resolve();
 
 function betzFrame(){
-  if (__betzFrame && __betzFrame.parentNode) return __betzFrame;
+  // Google replaces the iframe document with its Apps Script wrapper. Reusing
+  // that browsing context can lose the target name on the next POST, so every
+  // single-flight request gets a fresh, uniquely named iframe.
+  if (__betzFrame && __betzFrame.parentNode) __betzFrame.parentNode.removeChild(__betzFrame);
   var f = document.createElement("iframe");
-  f.name = "betz_receiver_frame";
+  __betzFrameSeq += 1;
+  f.name = "betz_receiver_frame_" + __betzFrameSeq;
   f.style.display = "none";
   f.setAttribute("aria-hidden", "true");
   f.setAttribute("title", "receptor");
@@ -610,6 +615,8 @@ function betzSend(body, urlOverride){
       window.removeEventListener("message", onMsg);
       clearTimeout(timer);
       if (form && form.parentNode) form.parentNode.removeChild(form);
+      if (frame && frame.parentNode) frame.parentNode.removeChild(frame);
+      if (__betzFrame === frame) __betzFrame = null;
     }
     function onMsg(ev){
       if (settled) return;
